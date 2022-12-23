@@ -9,13 +9,12 @@ on:
 
 jobs:
   verify:
+    env:
+      CGO_ENABLED: 0
     runs-on: ubuntu-latest
     container: devopsfaith/krakend:2.1.3
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup latest Alpine Linux
-        uses: jirutka/setup-alpine@v1
 
       - run: |
           krakend check-plugin
