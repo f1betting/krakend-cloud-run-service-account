@@ -6,6 +6,8 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -23,11 +25,13 @@ jobs:
           options: -v ${{ github.workspace }}:/app -w /app
           run: |
             go build -buildmode=plugin -o cloud-run-service-account.so .
-          
 
-      - name: Upload plugin as artifact
-        uses: actions/upload-artifact@v3
+      - name: version
+        run: echo "version=$(echo ${GITHUB_SHA} | head -c 7)" >> $GITHUB_ENV
+        id: version
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: cloud-run-service-account
-          path: ./cloud-run-service-account.so
-          retention-days: 14
+          name: ${{ env.version }}
+          files: ./cloud-run-service-account.so
