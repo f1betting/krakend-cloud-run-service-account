@@ -1,0 +1,29 @@
+name: Build plugin
+
+on:
+  push:
+    branches:
+      - main
+  workflow-call:
+
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+
+        - uses: actions/setup-go@v3
+          with:
+            go-version: "1.19.3"
+
+        - name: Build plugin
+          run: |
+            go build -buildmode=plugin -o cloud-run-service-account.so
+            
+        - name: Upload plugin as artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: cloud-run-service-account
+            path: ./cloud-run-service-account.so
+            retention-days: 14
