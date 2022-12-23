@@ -1,14 +1,14 @@
 <a name="readme-top"></a>
 
 <div>
-<h3 align="center">OpenAPItoKrakenD</h3>
+<h3 align="center">KrakenD Cloud Run Service Account</h3>
 
   <p align="center">
-    A tool to batch-convert OpenAPI 3.0 files to a flexible KrakenD configuration
+    A KrakenD plugin which injects a Google Service Account in the Authorization header
     <br />
-    <a href="https://github.com/niek-o/OpenAPItoKrakenD/issues">Report Bug</a>
+    <a href="https://github.com/niek-o/krakend-cloud-run-service-account/issues">Report Bug</a>
     ·
-    <a href="https://github.com/OpenAPItoKrakenD/issues">Request Feature</a>
+    <a href="https://github.com/krakend-cloud-run-service-account/issues">Request Feature</a>
     <br />
   </p>
 </div>
