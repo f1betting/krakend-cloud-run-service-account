@@ -8,22 +8,31 @@ on:
 
 
 jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
+  verify:
+    runs-on: ubuntu-latest
+    container: devopsfaith/krakend:2.1.3
+    steps:
+      - uses: actions/checkout@v3
 
-        - uses: actions/setup-go@v3
-          with:
-            go-version: "1.19.3"
+      - run: |
+          krakend check-plugin -v 1.19.3 -s ./go.sum
 
-        - name: Build plugin
-          run: |
-            go build -buildmode=plugin -o cloud-run-service-account.so
-            
-        - name: Upload plugin as artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: cloud-run-service-account
-            path: ./cloud-run-service-account.so
-            retention-days: 14
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: "1.19.3"
+
+      - name: Build plugin
+        run: |
+          go build -buildmode=plugin -o cloud-run-service-account.so
+
+      - name: Upload plugin as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cloud-run-service-account
+          path: ./cloud-run-service-account.so
+          retention-days: 14
