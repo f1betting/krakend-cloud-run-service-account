@@ -13,6 +13,7 @@
     <br />
     <img alt="GitHub Latest Version" src="https://img.shields.io/github/v/release/f1betting/krakend-cloud-run-service-account?label=Latest%20release&style=flat">
     <br />
+    <img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/f1betting/krakend-cloud-run-service-account">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/f1betting/krakend-cloud-run-service-account/action-build-plugin.yml?label=Build&branch=main">
   </p>
 </div>
